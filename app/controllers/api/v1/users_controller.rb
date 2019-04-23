@@ -1,8 +1,8 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: [:index, :show]
+  # before_action :authorized, only: [:index, :show]
 
   def index
-    users = Users.all
+    users = User.all
 
     render json: users
   end
