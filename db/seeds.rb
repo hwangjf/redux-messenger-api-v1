@@ -1,1 +1,1 @@
-DbSeeder.run()
+DbSeeder.run
