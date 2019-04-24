@@ -4,10 +4,10 @@ class Api::V1::MessagesController < ApplicationController
     message = Message.new(message_params)
     conversation = Conversation.find(message_params[:conversation_id])
     if message.save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        MessageSerializer.new(message)
-      ).serializable_hash
-      MessagesChannel.broadcast_to conversation, serialized_data
+      
+      # this is what adds the message to the conversation 
+      # subscribes to the conversation
+      MessagesChannel.broadcast_to conversation, message
       head :ok
     end
   end
