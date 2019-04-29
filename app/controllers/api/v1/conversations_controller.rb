@@ -8,10 +8,9 @@ class Api::V1::ConversationsController < ApplicationController
   def create
     conversation = Conversation.new(conversation_params)
     if conversation.save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(
-        ConversationSerializer.new(conversation)
-      ).serializable_hash
-      ActionCable.server.broadcast 'conversations_channel', serialized_data
+      
+      # this is what sends the things involved over this channel
+      ActionCable.server.broadcast 'conversations_channel', conversation
       head :ok
     end
   end
