@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   end
 
   def auth_headers # check for headers and return token
-    request.headers["Authorization"].split('')[1]
+    request.headers["Authorization"].split(' ')[1]
     # headers exist -> check key Authorization -> ['Bearer', 'token']
     # return 'token'
   end
