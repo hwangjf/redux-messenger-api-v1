@@ -17,14 +17,18 @@ class ApplicationController < ActionController::API
       nil
     end
   end
-
+  
+  def curr_user
+    begin
+      user_id = decoded_token[0]['user_id']
+      user = User.find(user_id)
+    rescue
+      nil
+    end
+  end
+  
   def logged_in
     !!curr_user
-  end
-
-  def curr_user
-    user_id = decoded_token[0]['user_id']
-    user = User.find(user_id)
   end
 
   def authorized

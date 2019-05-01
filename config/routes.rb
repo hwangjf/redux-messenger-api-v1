@@ -6,6 +6,10 @@ Rails.application.routes.draw do
       resources :users
       resources :conversations
       resources :messages
+
+      post '/login', to: 'auth#create'
+      get '/auto_login', to: 'auth#auto_login'
+      
       mount ActionCable.server => '/cable'
     end
   end

@@ -1,8 +1,8 @@
 class Api::V1::AuthController < ApplicationController
 
-  def login
+  def create
+    byebug
     user = User.find_by(username: params[:username])
-
     if user && user.validate(params[:password])
       render json: {user: UserSerializer.new(user)}
     else
@@ -11,6 +11,7 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def auto_login
+    byebug
     if logged_in
       render json: {user: UserSerializer.new(curr_user)}
     else

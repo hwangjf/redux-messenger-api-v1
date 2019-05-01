@@ -14,6 +14,11 @@ class Api::V1::ConversationsController < ApplicationController
       head :ok
     end
   end
+
+  def create_message
+    message = Message.create(message_params)
+    
+  end
     
   private
   
