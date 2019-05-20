@@ -4,7 +4,7 @@ class DbSeeder
 
   def self.create_users
     5.times do 
-      User.create(name: Faker::Name.name, password: '123')
+      User.create(username: Faker::Name.name, password: '123')
     end
   end
 

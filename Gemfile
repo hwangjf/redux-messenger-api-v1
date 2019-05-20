@@ -49,3 +49,5 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+gem 'jwt'

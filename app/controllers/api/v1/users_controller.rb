@@ -11,7 +11,8 @@ class Api::V1::UsersController < ApplicationController
     user = User.create(user_params)
 
     if user.valid?
-      render json: {user: UserSerializer.new(user)}
+      byebug
+      render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
     else
       render json: user.errors.full_messages
     end
