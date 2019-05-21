@@ -7,8 +7,9 @@ Rails.application.routes.draw do
       resources :conversations
       resources :messages
 
-      post '/login', to: 'auth#create'
-      get '/auto_login', to: 'auth#auto_login'
+      post '/signup', to: 'users#signup'
+      post '/login', to: 'users#login' 
+      get '/auto_login', to: 'users#auto_login'
       
       mount ActionCable.server => '/cable'
     end
