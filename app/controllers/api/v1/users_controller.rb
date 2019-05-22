@@ -7,7 +7,6 @@ class Api::V1::UsersController < ApplicationController
     render json: users
   end
   
-  # signup
   def signup
     user = User.create(user_params)
 
@@ -23,11 +22,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login
-    byebug
-    user = User.find_by(user_params)
-    byebug
+    user = User.find_by(username: user_params[:username])
     if user && user.authenticate(user_params[:password])
-      byebug
+
       render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
     else
       render json: {errors: 'Please enter the correct username and/or password'}, status: :unauthorized
@@ -35,7 +32,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def auto_login
-    byebug
     if logged_in
       render json: {user: UserSerializer.new(curr_user)}
     else
