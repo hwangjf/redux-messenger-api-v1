@@ -7,11 +7,10 @@ class Api::V1::UsersController < ApplicationController
     render json: users
   end
   
-  def create
+  def signup
     user = User.create(user_params)
 
     if user.valid?
-      byebug
       render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
     else
       render json: user.errors.full_messages
@@ -20,6 +19,24 @@ class Api::V1::UsersController < ApplicationController
   
   def show
     render json: curr_user
+  end
+
+  def login
+    user = User.find_by(username: user_params[:username])
+    if user && user.authenticate(user_params[:password])
+
+      render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
+    else
+      render json: {errors: 'Please enter the correct username and/or password'}, status: :unauthorized
+    end
+  end
+
+  def auto_login
+    if logged_in
+      render json: {user: UserSerializer.new(curr_user)}
+    else
+      render json: {errors: 'Please enter the correct username and/or password'}
+    end
   end
 
   private
