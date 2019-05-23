@@ -32,6 +32,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def auto_login
+    byebug
     if logged_in
       render json: {user: UserSerializer.new(curr_user)}
     else
