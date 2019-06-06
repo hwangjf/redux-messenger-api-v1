@@ -32,8 +32,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def auto_login
-    byebug
-    if logged_in
+    if curr_user
       render json: {user: UserSerializer.new(curr_user)}
     else
       render json: {errors: 'Please enter the correct username and/or password'}
