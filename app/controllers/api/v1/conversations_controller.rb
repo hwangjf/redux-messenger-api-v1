@@ -10,7 +10,7 @@ class Api::V1::ConversationsController < ApplicationController
     if conversation.save
       
       # this is what sends the things involved over this channel
-      ActionCable.server.broadcast 'conversations_channel', conversation
+      ActionCable.server.broadcast 'conversation_channel', conversation
       head :ok
     end
   end
