@@ -2,7 +2,8 @@ class Api::V1::UsersController < ApplicationController
   # before_action :authorized, only: [:index, :show]
 
   def index
-    users = User.all
+    byebug
+    users = User.where.not(id: curr_user.id)
 
     render json: users
   end
