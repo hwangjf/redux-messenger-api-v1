@@ -15,10 +15,9 @@ class Api::V1::ConversationsController < ApplicationController
     end
   end
 
-  def create_message
-    message = Message.create(message_params)
-    
-  end
+  # def create_message
+  #   message = Message.create(message_params)
+  # end
     
   private
   
