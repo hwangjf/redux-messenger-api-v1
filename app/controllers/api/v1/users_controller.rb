@@ -1,8 +1,8 @@
 class Api::V1::UsersController < ApplicationController
-  # before_action :authorized, only: [:index, :show]
+  before_action :authorized, only: [:index]
 
   def index
-    users = User.where.not(id: curr_user.id)
+    users = User.all
 
     render json: users
   end
@@ -11,9 +11,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.create(user_params)
 
     if user.valid?
-      users = User.where.not(id: curr_user.id)
-
-      render json: {user: UserSerializer.new(user), token: encode_token(user.id), otherUsers: users}
+      render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
     else
       render json: user.errors.full_messages
     end
@@ -35,11 +33,9 @@ class Api::V1::UsersController < ApplicationController
 
   def auto_login
     if logged_in
-      users = User.where.not(id: curr_user.id)
-      byebug
-      render json: {user: UserSerializer.new(curr_user), otherUsers: users}
+      render json: {user: UserSerializer.new(curr_user)}
     else
-      render json: {errors: 'Please enter the correct username and/or password'}
+      render json: {errors: 'Please enter the correct username and/or password'}, status: :unauthorized
     end
   end
 
