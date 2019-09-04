@@ -6,6 +6,7 @@ class Api::V1::ConversationsController < ApplicationController
   end
 
   def create
+    byebug
     conversation = Conversation.new(conversation_params)
     if conversation.save
       

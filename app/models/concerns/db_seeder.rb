@@ -28,17 +28,19 @@ class DbSeeder
     end
   end
 
-  def self.reseed
+  def self.clear_all
     User.destroy_all
     Conversation.destroy_all
   end
 
   def self.run
-    self.reseed
+    self.clear_all
     self.create_users
     self.create_conversations
     self.create_participants
     self.create_messages
+
+    User.create(username: 'hello', password: 'hello')
   end
 
 end
