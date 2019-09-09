@@ -6,13 +6,12 @@ class Api::V1::ConversationsController < ApplicationController
   end
 
   def create
-    byebug
-    conversation = Conversation.new(conversation_params)
-    if conversation.save
+    conversation = Conversation.find_or_initialize_by(conversation_params)
+    if conversation || conversation.save
       
       # this is what sends the things involved over this channel
       ActionCable.server.broadcast 'conversation_channel', conversation
-      head :ok
+      render json: conversation
     end
   end
 
