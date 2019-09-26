@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  # before_action :authorized, only: [:index, :show]
+  before_action :authorized, only: [:index]
 
   def index
     users = User.all
@@ -35,7 +35,7 @@ class Api::V1::UsersController < ApplicationController
     if curr_user
       render json: {user: UserSerializer.new(curr_user)}
     else
-      render json: {errors: 'Please enter the correct username and/or password'}
+      render json: {errors: 'Please enter the correct username and/or password'}, status: :unauthorized
     end
   end
 

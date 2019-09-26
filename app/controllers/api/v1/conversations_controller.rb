@@ -2,23 +2,22 @@ class Api::V1::ConversationsController < ApplicationController
   
   def index
     conversations = Conversation.all
-    render json: conversations
+
+    render json: conversations, include: '**'
   end
 
   def create
-    conversation = Conversation.new(conversation_params)
-    if conversation.save
-      
+    conversation = Conversation.find_or_initialize_by(conversation_params)
+    if conversation || conversation.save
       # this is what sends the things involved over this channel
-      ActionCable.server.broadcast 'conversations_channel', conversation
-      head :ok
+      ActionCable.server.broadcast 'conversation_channel', conversation
+      render json: conversation
     end
   end
 
-  def create_message
-    message = Message.create(message_params)
-    
-  end
+  # def create_message
+  #   message = Message.create(message_params)
+  # end
     
   private
   

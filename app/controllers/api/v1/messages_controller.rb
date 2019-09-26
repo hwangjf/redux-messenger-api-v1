@@ -2,13 +2,15 @@ class Api::V1::MessagesController < ApplicationController
 
   def create
     message = Message.new(message_params)
+    message.user_id = curr_user.id
     conversation = Conversation.find(message_params[:conversation_id])
-    if message.save
-      
+    
+    if message.save  
       # this is what adds the message to the conversation 
       # subscribes to the conversation
-      MessagesChannel.broadcast_to conversation, message
-      head :ok
+      
+      MessageChannel.broadcast_to conversation, MessageSerializer.new(message)
+      render json: message
     end
   end
 
