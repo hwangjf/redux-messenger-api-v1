@@ -8,7 +8,8 @@ class Api::V1::MessagesController < ApplicationController
     if message.save  
       # this is what adds the message to the conversation 
       # subscribes to the conversation
-      MessageChannel.broadcast_to conversation, message
+      
+      MessageChannel.broadcast_to conversation, MessageSerializer.new(message)
       render json: message
     end
   end

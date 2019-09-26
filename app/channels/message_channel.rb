@@ -1,7 +1,8 @@
 class MessageChannel < ApplicationCable::Channel
    def subscribed
-    conversation = Conversation.find(params[:conversation])
+    conversation = Conversation.find(params[:conversation_id])
     # can use object instead of unique string but MUST BE UNIQUE
+
     stream_for conversation
   end
 
