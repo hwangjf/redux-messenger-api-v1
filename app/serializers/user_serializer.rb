@@ -1,6 +1,8 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :username
+  has_many :friends, serializer: FriendSerializer
 
-  # has_many :conversations
-  # has_many :messages
+  def friends
+    object.friends.distinct
+  end
 end

@@ -19,6 +19,8 @@ class Api::V1::UsersController < ApplicationController
   
   def show
     render json: curr_user
+    # user = User.find(params[:id])
+    # render json: UserSerializer.new(user)
   end
 
   def login
