@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
   def index
     users = User.all
 
-    render json: users
+    render json: users, each_serializer: SingleUserSerializer
   end
   
   def signup
@@ -39,6 +39,13 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: {errors: 'Please enter the correct username and/or password'}, status: :unauthorized
     end
+  end
+
+  def add_friend
+    friendship = Friendship.create(user_id: curr_user.id, friend_id: params["friend_id"])
+
+    byebug
+    render json: SingleUserSerializer.new(friendship.friend)
   end
 
   private
