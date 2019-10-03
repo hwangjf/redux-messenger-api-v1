@@ -8,6 +8,9 @@ class MessageChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
-    raise 'huh'
+    puts '**********************************************************'
+    puts '**********************************************************'
+    puts '**********************************************************'
+    puts '**********************************************************'
   end
 end

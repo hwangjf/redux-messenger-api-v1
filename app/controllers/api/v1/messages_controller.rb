@@ -4,7 +4,6 @@ class Api::V1::MessagesController < ApplicationController
     message = Message.new(message_params)
     message.user_id = curr_user.id
     conversation = Conversation.find(message_params[:conversation_id])
-    
     if message.save  
       # this is what adds the message to the conversation 
       # subscribes to the conversation
