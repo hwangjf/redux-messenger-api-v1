@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
       post '/signup', to: 'users#signup'
       post '/login', to: 'users#login' 
-      get '/auto_login', to: 'users#auto_login'
+      get '/auto_login', to: 'auth#auto_login'
       post '/add_friend', to: 'users#add_friend'
 
       mount ActionCable.server => '/cable'

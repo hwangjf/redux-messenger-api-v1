@@ -33,14 +33,6 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def auto_login
-    if curr_user
-      render json: {user: UserSerializer.new(curr_user)}
-    else
-      render json: {errors: 'Please enter the correct username and/or password'}, status: :unauthorized
-    end
-  end
-
   # TODO: MOVE TO FRIEND CONTROLLER
   def add_friend
     friendship = Friendship.create(user_id: curr_user.id, friend_id: params["friend_id"])
