@@ -36,7 +36,6 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
-  config.action_cable.mount_path = '/cable'
   config.action_cable.url = 'wss://redux-messenger-api-v1.herokuapp.com/cable'
   config.action_cable.allowed_request_origins = [ 'https://redux-messenger-api-v1.herokuapp.com', /https:\/\/redux-messenger-api-v1.herokuapp.*/, 'http://redux-messenger-api-v1.herokuapp.com', /http:\/\/redux-messenger-api-v1.herokuapp.*/, /http:\/\/localhost:*/ ]
 
