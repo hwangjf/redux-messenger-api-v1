@@ -13,6 +13,14 @@ class Api::V1::MessagesController < ApplicationController
     end
   end
 
+  def patch
+
+  end
+
+  def delete
+
+  end
+
   private
 
   def message_params
