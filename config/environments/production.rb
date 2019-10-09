@@ -37,7 +37,18 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
-  config.action_cable.allowed_request_origins = [ 'https://redux-messenger-api-v1.herokuapp.com', /https:\/\/redux-messenger-api-v1.herokuapp.*/, 'http://redux-messenger-api-v1.herokuapp.com', /http:\/\/redux-messenger-api-v1.herokuapp.*/, /http:\/\/localhost:*/ ]
+  config.action_cable.allowed_request_origins = [ 
+    'https://redux-messenger-api-v1.herokuapp.com', 
+    /https:\/\/redux-messenger-api-v1.herokuapp.*/, 
+    'http://redux-messenger-api-v1.herokuapp.com', 
+    /http:\/\/redux-messenger-api-v1.herokuapp.*/, 
+    /http:\/\/localhost:*/, 
+    'https://redux-messenger.com', 
+    /https:\/\/redux-messenger.*/, 
+    'http://redux-messenger.com', 
+    /http:\/\/redux-messenger.*/, 
+    /http:\/\/localhost:*/ 
+  ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
