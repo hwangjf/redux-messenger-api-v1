@@ -43,10 +43,10 @@ Rails.application.configure do
     'http://redux-messenger-api-v1.herokuapp.com', 
     /http:\/\/redux-messenger-api-v1.herokuapp.*/, 
     /http:\/\/localhost:*/, 
-    'https://redux-messenger.com', 
-    /https:\/\/redux-messenger.*/, 
-    'http://redux-messenger.com', 
-    /http:\/\/redux-messenger.*/, 
+    'https://reduxmessenger.com', 
+    /https:\/\/reduxmessenger.*/, 
+    'http://reduxmessenger.com', 
+    /http:\/\/reduxmessenger.*/, 
     /http:\/\/localhost:*/ 
   ]
 
