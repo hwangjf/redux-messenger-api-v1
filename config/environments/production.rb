@@ -32,14 +32,14 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
-  config.middleware.use ChatActionCable  
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  config.action_cable.url = 'wss://heroku-messenger-api-v1.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://reduxmessenger.com', /https:\/\/reduxmessenger.*/ ]
-  
+  # config.action_cable.url = 'wss://example.com/cable'
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.mount_path = '/cable'
+  config.action_cable.url = 'wss://redux-messenger-api-v1.herokuapp.com/cable'
+  config.action_cable.allowed_request_origins = [ 'https://redux-messenger-api-v1.herokuapp.com', /https:\/\/redux-messenger-api-v1.herokuapp.*/, 'http://redux-messenger-api-v1.herokuapp.com', /http:\/\/redux-messenger-api-v1.herokuapp.*/, /http:\/\/localhost:*/ ]
 
-  # config.web_socket_server_url = "wss://heroku-messenger-api-v1.herokuapp.com/cable"
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 

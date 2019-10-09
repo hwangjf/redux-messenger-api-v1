@@ -6,5 +6,8 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:3eae2ea4b37b3a32a086b0ce6093b02b@hammerjaw.redistogo.com:11297/
+  url: <%= ENV['REDIS_URL'] %>
+  host: <%= ENV['PRODUCTION_REDIS_HOST'] %>
+  port: <%= ENV['PRODUCTION_REDIS_PORT'] %>
+  password: <%= ENV['SECRET_KEY_BASE'] %>
   channel_prefix: redux-messenger-server_production
