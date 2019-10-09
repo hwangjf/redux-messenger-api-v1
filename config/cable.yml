@@ -6,8 +6,8 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV['REDIS_URL'] %>
+  url: <%= ENV['REDISTOGO_URL'] %>
   host: <%= ENV['PRODUCTION_REDIS_HOST'] %>
   port: <%= ENV['PRODUCTION_REDIS_PORT'] %>
-  password: <%= ENV['SECRET_KEY_BASE'] %>
+  password: <%= ENV['PRODUCTION_REDIS_PASSWORD'] %>
   channel_prefix: redux-messenger-server_production
