@@ -4,7 +4,7 @@ class ConversationSerializer < ActiveModel::Serializer
   # has_many :users, serializer: UserSerializer
 
   def users
-    ActiveModel::Serializer::ArraySerializer.new(object.users.uniq, each_serializer: UserSerializer)
+    ActiveModel::Serializer::CollectionSerializer.new(object.users.uniq, each_serializer: UserSerializer)
   end
 
 end
