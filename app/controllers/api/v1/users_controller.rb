@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
     render json: users, each_serializer: SingleUserSerializer
   end
   
-  def signup
+  def create
     user = User.create(user_params)
 
     if user.valid?
@@ -17,11 +17,11 @@ class Api::V1::UsersController < ApplicationController
     end
   end
   
-  def show
-    render json: curr_user
-    # user = User.find(params[:id])
-    # render json: UserSerializer.new(user)
-  end
+  # def show
+  #   render json: curr_user
+  #   # user = User.find(params[:id])
+  #   # render json: UserSerializer.new(user)
+  # end
 
   def login
     user = User.find_by(username: user_params[:username])
@@ -49,6 +49,14 @@ class Api::V1::UsersController < ApplicationController
     else
       render json: {message: 'that person is not your friend'}
     end
+  end
+
+  def update
+
+  end
+
+  def delete
+
   end
 
   private
