@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/', to: 'welcome#index'
-  
+  mount ActionCable.server => "/cable"
   namespace :api do
     namespace :v1 do
       resources :users
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       get '/auto_login', to: 'users#auto_login'
       post '/add_friend', to: 'users#add_friend'
 
-      mount ActionCable.server => '/cable'
     end
   end
 end
