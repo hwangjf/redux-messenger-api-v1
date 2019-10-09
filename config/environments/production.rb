@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.web_socket_server_url = "wss://heroku-messenger-api-v1.herokuapp.com/cable"
   # config.action_cable.allowed_request_origins = ["https://reduxmessenger.com"]
   config.middleware.use ChatActionCable  
-  config.web_socket_server_url = "wss://heroku-messenger-api-v1.herokuapp.com/"
+  config.web_socket_server_url = "wss://heroku-messenger-api-v1.herokuapp.com/cable"
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
