@@ -6,15 +6,15 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
+      
       resources :users, only: [:index, :update, :delete]
+      resources :friends, only: [:index, :create, :delete]
       resources :conversations, only: [:index, :create]
       resources :messages, only: [:create]
       
-      post '/users/:id/friends', to: 'users#add_friend'
-      get '/users/:id/friends', to: 'users#friends'
-      
       post '/signup', to: 'users#create'
-      post '/login', to: 'users#login' 
+      
+      post '/login', to: 'auth#login'
       get '/auto_login', to: 'auth#auto_login'
 
     end

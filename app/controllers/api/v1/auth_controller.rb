@@ -1,6 +1,7 @@
 class Api::V1::AuthController < ApplicationController
-
-  def create
+  skip_before_action :authorized
+  
+  def login
     user = User.find_by(username: params[:username])
     if user && user.validate(params[:password])
       render json: {user: UserSerializer.new(user)}
