@@ -4,7 +4,7 @@ class Api::V1::AuthController < ApplicationController
   def login
     user = User.find_by(username: params[:user][:username])
     if user && user.validate(params[:user][:password])
-      render json: {user: UserSerializer.new(user)}
+      render json: {user: UserSerializer.new(user), token: encode_token(user.id)}
     else
       render json: {errors: 'Please enter the correct username and/or password'}
     end
