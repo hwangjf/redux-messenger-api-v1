@@ -2,8 +2,8 @@ class Api::V1::AuthController < ApplicationController
   skip_before_action :authorized
   
   def login
-    user = User.find_by(username: params[:username])
-    if user && user.validate(params[:password])
+    user = User.find_by(username: params[:user][:username])
+    if user && user.validate(params[:user][:password])
       render json: {user: UserSerializer.new(user)}
     else
       render json: {errors: 'Please enter the correct username and/or password'}
