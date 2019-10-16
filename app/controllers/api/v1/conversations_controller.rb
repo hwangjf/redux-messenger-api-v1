@@ -7,7 +7,7 @@ class Api::V1::ConversationsController < ApplicationController
   end
 
   def create
-    conversation = Conversation.find_or_initialize_by(conversation_params)
+    conversation = Conversation.find_or_create_by(conversation_params)
     if conversation || conversation.save
       # this is what sends the things involved over this channel
       ActionCable.server.broadcast 'conversation_channel', conversation
