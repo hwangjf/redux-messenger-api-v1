@@ -1,4 +1,4 @@
-class Api::V1::FriendController < ApplicationController
+class Api::V1::FriendsController < ApplicationController
 
   def index
     friends = curr_user.friends
@@ -8,8 +8,9 @@ class Api::V1::FriendController < ApplicationController
 
   def create
     friendship = Friendship.create(user_id: curr_user.id, friend_id: params["friend_id"])
+    byebug
 
-    render json: SingleUserSerializer.new(friendship.friend)
+    render json: friendship.friend, serializer: SingleUserSerializer
   end
 
   def destroy
