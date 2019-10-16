@@ -8,7 +8,6 @@ class Api::V1::FriendsController < ApplicationController
 
   def create
     friendship = Friendship.create(user_id: curr_user.id, friend_id: params["friend_id"])
-    byebug
 
     render json: friendship.friend, serializer: SingleUserSerializer
   end
